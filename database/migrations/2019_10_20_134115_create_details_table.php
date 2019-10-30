@@ -15,6 +15,10 @@ class CreateDetailsTable extends Migration
     {
         Schema::create('details', function (Blueprint $table) {
             $table->bigIncrements('id');
+
+            $table->integer('flat_id')->unsigned();
+            $table->foreign('flat_id')->references('id')->on('flats')->unique()->unsigned();
+
             $table->tinyInteger('num_room');
             $table->tinyInteger('bed');
             $table->tinyInteger('bathroom');
@@ -22,6 +26,8 @@ class CreateDetailsTable extends Migration
             $table->string('img');
             $table->timestamps();
         });
+
+
     }
 
     /**

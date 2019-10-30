@@ -21,13 +21,13 @@ class AddForeignKey extends Migration
                -> on('users');//tabella
       });
 
-      Schema::table('details', function (Blueprint $table) {
-
-        $table -> bigInteger('flat_id') -> unsigned() -> index();//tabella riferimento
-        $table -> foreign('flat_id', 'relationDetailFlat')
-               -> references('id')//colonna
-               -> on('flats');//tabella
-      });
+      // Schema::table('details', function (Blueprint $table) {
+      //
+      //   $table -> bigInteger('flat_id') -> unsigned() -> nullable() -> unique();//tabella riferimento
+      //   $table -> foreign('flat_id', 'relationDetailFlat')
+      //          -> references('id')//colonna
+      //          -> on('flats');//tabella
+      // });
     }
 
     /**
@@ -44,11 +44,11 @@ class AddForeignKey extends Migration
 
       });
 
-      Schema::table('details', function (Blueprint $table) {
-
-        $table -> dropForeign('relationDetailFlat');
-        $table -> dropColumn('flat_id');
-
-      });
+      // Schema::table('details', function (Blueprint $table) {
+      //
+      //   $table -> dropForeign('relationDetailFlat');
+      //   $table -> dropColumn('flat_id');
+      //
+      // });
     }
 }

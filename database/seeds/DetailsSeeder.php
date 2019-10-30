@@ -15,10 +15,27 @@ class DetailsSeeder extends Seeder
     public function run()
         {
 
-          factory(App\ContactCompany::class, 10)->create()->each(function ($company) {
-              $company->contacts()->save(factory(App\Contact::class)->make());
-          });
-        }
+          //   # Lets create 150 random phones
+          //   $details = factory(Detail::class, 100)->create([
+          //       'flat_id' => $this->getRandomFlatId()
+          //     ]);
+          // }
+          //
+          //
+          //   private function getRandomFlatId() {
+          //   $flat = Flat::inOrder() -> first();
+          //   return $flat->id;
+          //   }
 
+
+            factory(Flat::class, 10)->create()->each(function ($flat) {
+            // Seed the relation with one address
+            $detail = factory(Detail::class)->make();
+            $flat->detail()->save($detail);
+
+            });
+
+
+        }
 
 }
